@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numberOfArrays(vector<int>& dif, int lower, int upper) {
+        long long minim = INT_MAX, maxim = INT_MIN, sum = 0; 
+        for(auto &i: dif){
+            minim = min(minim , sum);
+            maxim = max(maxim , sum);
+            sum += i;
+        }
+        minim = min(minim , sum);
+        maxim = max(maxim , sum);
+        minim = lower - minim;
+        maxim = upper - maxim;
+        return maxim - minim + 1 <= 0 ? 0 : maxim - minim + 1;
+    }
+};
